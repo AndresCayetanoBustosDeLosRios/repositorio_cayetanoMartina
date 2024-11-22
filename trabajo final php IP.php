@@ -1,5 +1,5 @@
 <?php
-function matrizTemp{
+function matrizTemp(){
 $matrizTemPrin = array(
     array(30,28,26,22,18,12,10,14,17,20,25,29),
     array(33,30,27,22,19,13,11,15,18,21,26,31),
@@ -14,23 +14,23 @@ $matrizTemPrin = array(
 );
 return $matrizTemPrin;
 }
-function matrizManual{
+function matrizManual(){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
         for ($mes=0; $mes<12; $mes++){
         echo ("ingrese una temperatura mayor -50 o menor a 50");
-        $temperatura = tring(fgets(STDIN));
+        $temperatura = trim(fgets(STDIN));
         $matrizTemPrin [$anio] [$mes] = $temperatura;
 
         }
     }
- return $matrizTemPrin
+ return $matrizTemPrin;
 } 
 function columnaMatriz($arrayprinc){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
         for ($mes = 0; $mes < 12; $mes++){
-        echo(" ").$matrizTemPrin [$anio] [$mes].("\n");
+        echo(" ").$arrayprinc [$anio] [$mes].("\n");
       } 
     }
 }
