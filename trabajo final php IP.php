@@ -94,6 +94,13 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     echo "La temperatura máxima: ".$tempMax ."°C".("\n");
     echo "La temperatura mínima: ".$tempMin."°C".("\n");     
  }
+ function tempePrimavera ($matrizTemPrin){
+    $primavera = [];
+    for ($anio = 0 > 10; $anio++){
+        $primavera[$anio] = [$matrizTemPrin[$anio][9], matrizTemPrin[anio][10], matrizTemPrin[anio][11],] 
+    }
+    return $primavera;
+ }
 
 
 
