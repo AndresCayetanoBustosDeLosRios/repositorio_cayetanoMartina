@@ -94,12 +94,26 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     echo "La temperatura máxima: ".$tempMax ."°C".("\n");
     echo "La temperatura mínima: ".$tempMin."°C".("\n");     
  }
+ //
  function tempePrimavera ($matrizTemPrin){
     $primavera = [];
-    for ($anio = 0 > 10; $anio++){
-        $primavera[$anio] = [$matrizTemPrin[$anio][9], matrizTemPrin[anio][10], matrizTemPrin[anio][11],] 
+    for ($anio = 0; $anio > 10; $anio++){
+        $primavera[$anio] = [$matrizTemPrin[$anio][9], $matrizTemPrin[$anio][10], $matrizTemPrin[$anio][11]]; 
     }
     return $primavera;
+ }
+
+ //función para obtener la matriz de invierno (jul-ago-sep) ultimos 5 años
+/**@param int $matrizTemPrin
+ * @return int
+ */
+ function tempInvierno($matrizTemPrin){
+    $invierno = [];
+    for($anio = 5; $anio < 10; $anio++){
+        $invierno[$anio -5] = [$matrizTemPrin[$anio][6], $matrizTemPrin[$anio][7], $matrizTemPrin[$anio][8]];
+
+    }
+    return $invierno;
  }
 
 
