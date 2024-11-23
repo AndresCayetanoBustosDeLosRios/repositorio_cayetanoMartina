@@ -29,9 +29,9 @@ function matrizManual(){
 function columnaMatriz($matrizTemPrin){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
-        echo "Año " . (2014 + $anio) . ": ";
+        echo ("\n")."Año " . (2014 + $anio) . ":";
         for ($mes = 0; $mes < 12; $mes++){
-        echo(" ").$matrizTemPrin [$anio] [$mes].("\n");
+        echo(" ").$matrizTemPrin [$anio] [$mes];
       } 
     }
 }
@@ -150,7 +150,8 @@ function menuOpcion(){
                 $anio = intval(trim(fgets(STDIN)));
                 echo "Ingrese el mes (Del 1 al 12): ";
                 $mes = intval(trim(fgets(STDIN)));
-                devuelveTemp($matrizTemPrin, $anio, $mes);
+                $temperatura = devuelveTemp($matrizTemPrin, $anio, $mes);
+                echo "Dado el año y el mes la temperatura es: ".$temperatura;
                 break;
             case 5:
                 echo "Ingrese el año (Desde el 2014 hasta el 2023): ";
@@ -159,8 +160,8 @@ function menuOpcion(){
                 break;
             case 6:
                 echo "Ingrese el mes (Del 1 al 12): ";
-                $fila = intval(trim(fgets(STDIN)));
-                tempAnual ($mes, $matrizTemPrin);
+                $mes = intval(trim(fgets(STDIN)));
+                tempAnual($mes, $matrizTemPrin);
                 break;
             case 7:
                 tempMaxMin($matrizTemPrin);
