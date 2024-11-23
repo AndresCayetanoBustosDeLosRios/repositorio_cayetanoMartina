@@ -26,11 +26,11 @@ function matrizManual(){
     }
  return $matrizTemPrin;
 } 
-function columnaMatriz($arrayPrinc){
+function columnaMatriz($matrizTemPrin){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
         for ($mes = 0; $mes < 12; $mes++){
-        echo(" ").$arrayPrinc [$anio] [$mes].("\n");
+        echo(" ").$matrizTemPrin [$anio] [$mes].("\n");
       } 
     }
 }
@@ -44,7 +44,7 @@ function devuelveTemp($matrizTemPrin, $anio, $mes){
 } //a revisar
     
 //punto e, devuelve las doce temp de un año determinado por el usuario
-function tempMensual($anio, $mes, $matrizTemPrin){
+function tempMensual($anio, $matrizTemPrin){
     $colum = $anio - 2014;
     $cantElementos = count($matrizTemPrin[$colum]) ;
     for($mes = 0; $mes < $cantElementos; $mes++){
@@ -53,7 +53,7 @@ function tempMensual($anio, $mes, $matrizTemPrin){
 }// a revisar
 
 //punto f, muestra para un mes determinado las temp de todos los años y el promedio
-function tempAnual ($anio, $mes, $matrizTemPrin){
+function tempAnual ($mes, $matrizTemPrin){
     $fila = $mes - 1; 
     $suma = 0;
     $contPromedio = 0;
@@ -71,7 +71,7 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
 /**@param int $anio, $mes, $matrizTemPrin
  * @return int */
 
- function tempMaxMin($mes, $anio, $matrizTemPrin){
+ function tempMaxMin($matrizTemPrin){
     $mes = $mes - 1;
     $anio = $anio - 2014;
     $tempMax = $matrizTemPrin[0][0];
@@ -145,30 +145,30 @@ function menuOpcion(){
                 $matrizTemPrin = matrizManual();
                 break;
             case 3:
-                columnaMatriz($arrayPrinc);
+                columnaMatriz($matrizTemPrin);
                 break;
             case 4:
                 echo "Ingrese el año (Desde 2014 hasta el 2023): ";
-                $colum = intval(trim(fgets(STDIN)));
+                $anio = intval(trim(fgets(STDIN)));
                 echo "Ingrese el mes (Del 1 al 12): ";
-                $fila = intval(trim(fgets(STDIN)));
-                devuelveTemp($matrizTemPrin, $fila, $colum);
+                $mes = intval(trim(fgets(STDIN)));
+                devuelveTemp($matrizTemPrin, $colum);
                 break;
             case 5:
                 echo "Ingrese el año (Desde el 2014 hasta el 2023): ";
-                $colum = intval(trim(fgets(STDIN)));
-                tempMensual($colum, $fila,$matrizTemPrin);
+                $anio = intval(trim(fgets(STDIN)));
+                tempMensual($anio, $matrizTemPrin);
                 break;
             case 6:
                 echo "Ingrese el mes (Del 1 al 12): ";
                 $fila = intval(trim(fgets(STDIN)));
-                tempAnual ($fila, $colum,$matrizTemPrin);
+                tempAnual ($mes, $matrizTemPrin);
                 break;
             case 7:
-                tempMaxMin($fila, $colum,$matrizTemPrin);
+                tempMaxMin($matrizTemPrin);
                 break;  
             case 8:
-                $primavera = tempPrimavera ($matrizTemPrin);
+                $primavera = tempPrimavera($matrizTemPrin);
                 muestraTemp($primavera); //a revisar
                 break;    
             case 9:
