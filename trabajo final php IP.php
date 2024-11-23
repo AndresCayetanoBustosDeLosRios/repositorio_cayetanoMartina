@@ -58,7 +58,7 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     $suma = 0;
     $contPromedio = 0;
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
-        echo (2014 + $anio). ":" .$matrizTemPrin[$anio][$fila] .("ºC\n");
+        echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$fila] .("ºC\n");
     $suma +  $matrizTemPrin[$anio][$fila];
     $contPromedio = 0;
     }
@@ -66,6 +66,35 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     $promedio = $suma/$contPromedio;
     echo "Promedio: " . round($promedio, 2) . ("°C\n"); 
 }
+
+//punto g, halla la temp máx. y mín. dado mes y año.
+/**@param int $anio, $mes, $matrizTemPrin
+ * @return int */
+
+ function tempMaxMin($mes, $anio, $matrizTemPrin){
+    $mes = $mes - 1;
+    $anio = $anio - 2014;
+    $tempMax = $matrizTemPrin[0][0];
+    $tempMin = $matrizTemPrin [0][0];
+    $mesMax = 1;
+    $mesMin = 1;
+        for($anio = 0; $anio < 10; $anio++){
+            for($mes = 0; $mes < 12; $mes++){
+                if($matrizTemPrin[$anio][$mes] > $tempMax){
+                    $tempMax = $matrizTemPrin[$anio][$mes]; 
+                    $mesMax = $mes + 1;
+                }
+                    if($matrizTemPrin[$anio][$mes] < $tempMin){
+                        $tempMin = $matrizTemPrin[$anio][$mes];
+                        $mesMin = $mes + 1;
+                    }    
+            }
+
+         }
+    echo "La temperatura máxima: ".$tempMax ."°C".("\n");
+    echo "La temperatura mínima: ".$tempMin."°C".("\n");     
+ }
+
 
 
 $pi = matrizTemp(); 
