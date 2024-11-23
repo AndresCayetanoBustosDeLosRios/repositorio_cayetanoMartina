@@ -26,11 +26,11 @@ function matrizManual(){
     }
  return $matrizTemPrin;
 } 
-function columnaMatriz($arrayprinc){
+function columnaMatriz($arrayPrinc){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
         for ($mes = 0; $mes < 12; $mes++){
-        echo(" ").$arrayprinc [$anio] [$mes].("\n");
+        echo(" ").$arrayPrinc [$anio] [$mes].("\n");
       } 
     }
 }
@@ -39,7 +39,7 @@ function devuelveTemp($matrizTemPrin, $anio, $mes){
     $fila = $mes - 1;
     $colum = $anio - 2014;
 
-    $temp = $matrizTemPrin[$fila][$colum];
+    $temp = $matrizTemPrin[$colum][$fila];
   return $temp;  
 } //a revisar
     
@@ -58,7 +58,7 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     $suma = 0;
     $contPromedio = 0;
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
-        echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$fila] .("ºC\n");
+        echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$fila] .("°C\n");
     $suma +  $matrizTemPrin[$anio][$fila];
     $contPromedio = 0;
     }
@@ -95,9 +95,9 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     echo "La temperatura mínima: ".$tempMin."°C".("\n");     
  }
  //
- function tempePrimavera ($matrizTemPrin){
+ function tempPrimavera ($matrizTemPrin){
     $primavera = [];
-    for ($anio = 0; $anio > 10; $anio++){
+    for ($anio = 0; $anio < 10; $anio++){
         $primavera[$anio] = [$matrizTemPrin[$anio][9], $matrizTemPrin[$anio][10], $matrizTemPrin[$anio][11]]; 
     }
     return $primavera;
@@ -115,8 +115,8 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     }
     return $invierno;
  }
-function menuOpcion {
-    $matrizTemPrin[];
+function menuOpcion(){
+    $matrizTemPrin = matrizTemp();
     do {
         echo "\nMenú de opciones:\n";
         echo "1. Carga automática de temperaturas\n";
@@ -132,6 +132,10 @@ function menuOpcion {
         echo "Elija una opción: ";
         $opcion = intval(trim(fgets(STDIN)));
          
+        $matrizTemPrin = matrizTemp();
+        $arrayPrinc = columnaMatriz(); //a revisar
+        $fila = 0;
+        $colum = 0;
         switch ($opcion) {
             case 1:
                 $matrizTemPrin = matrizTemp();
@@ -141,7 +145,7 @@ function menuOpcion {
                 $matrizTemPrin = matrizManual();
                 break;
             case 3:
-                columnaMatriz($arrayprinc);
+                columnaMatriz($arrayPrinc);
                 break;
             case 4:
                 echo "Ingrese el año (Desde 2014 hasta el 2023): ";
@@ -164,12 +168,12 @@ function menuOpcion {
                 tempMaxMin($fila, $colum,$matrizTemPrin);
                 break;  
             case 8:
-                $primavera = tempePrimavera ($matrizTemPrin);
-                mostrarTemp($primavera);
+                $primavera = tempPrimavera ($matrizTemPrin);
+                muestraTemp($primavera); //a revisar
                 break;    
             case 9:
-                $invierno = matrizInvierno($matriz);
-                mostrarTemp($invierno);
+                $invierno = tempInvierno($matrizTemPrin);
+                muestraTemp($invierno); //a revisar
                 break;
             case 0:
                 echo "Saliendo del programa.\n";
@@ -181,3 +185,5 @@ function menuOpcion {
 }
 // para poder ejecutar el menú
 menuOpcion();
+
+?>
