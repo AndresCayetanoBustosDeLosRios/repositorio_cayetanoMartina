@@ -132,10 +132,7 @@ function menuOpcion(){
         echo "Elija una opción: ";
         $opcion = intval(trim(fgets(STDIN)));
          
-        $matrizTemPrin = matrizTemp();
-        $arrayPrinc = columnaMatriz(); //a revisar
-        $fila = 0;
-        $colum = 0;
+        
         switch ($opcion) {
             case 1:
                 $matrizTemPrin = matrizTemp();
