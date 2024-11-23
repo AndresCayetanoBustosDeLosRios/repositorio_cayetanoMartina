@@ -34,6 +34,21 @@ function columnaMatriz($arrayprinc){
       } 
     }
 }
+//punto d, devuelve temp dado mes y año
+function devuelveTemp($matrizTemPrin, $anio, $mes){
+    $fila = $mes - 1;
+    $colum = $anio - 2014;
+
+    $temp = $matrizTemPrin[$fila][$colum];
+  return $temp;  
+} //a revisar
     
+//punto e, devuelve las doce temp de un año determinado por el usuario
+function tempMensual($mes, $anio, $matrizTemPrin){
+
+}
+
+
+
 $pi = matrizTemp(); 
 columnaMatriz($pi);
