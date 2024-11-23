@@ -44,9 +44,13 @@ function devuelveTemp($matrizTemPrin, $anio, $mes){
 } //a revisar
     
 //punto e, devuelve las doce temp de un año determinado por el usuario
-function tempMensual($mes, $anio, $matrizTemPrin){
-
-}
+function tempMensual($anio, $mes, $matrizTemPrin){
+    $colum = $anio - 2014;
+    $cantElementos = count($matrizTemPrin[$colum]) ;
+    for($mes = 0; $mes > $cantElementos; $mes++){
+        echo $matrizTemPrin[$colum][$mes].("\n"); 
+    }
+}// a revisar
 
 
 
