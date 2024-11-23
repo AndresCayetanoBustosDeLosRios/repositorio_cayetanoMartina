@@ -149,7 +149,7 @@ function menuOpcion(){
                 $anio = intval(trim(fgets(STDIN)));
                 echo "Ingrese el mes (Del 1 al 12): ";
                 $mes = intval(trim(fgets(STDIN)));
-                devuelveTemp($matrizTemPrin, $colum);
+                devuelveTemp($matrizTemPrin, $anio, $colum);
                 break;
             case 5:
                 echo "Ingrese el año (Desde el 2014 hasta el 2023): ";
