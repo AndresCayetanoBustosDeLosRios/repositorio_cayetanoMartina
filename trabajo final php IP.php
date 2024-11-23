@@ -51,18 +51,20 @@ function tempMensual($anio, $mes, $matrizTemPrin){
         echo $matrizTemPrin[$colum][$mes].("\n"); 
     }
 }// a revisar
+
+//punto f, muestra para un mes determinado las temp de todos los años y el promedio
 function tempAnual ($anio, $mes, $matrizTemPrin){
     $fila = $mes - 1; 
     $suma = 0;
     $contPromedio = 0;
-    for (anio = 0; $anio count($matrizTemPrin); $anio++){
-    echo (2014 + $anio). ":" $matrizTemPrin[$anio][$fila] ."ºC\n";
+    for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
+        echo (2014 + $anio). ":" .$matrizTemPrin[$anio][$fila] .("ºC\n");
     $suma +  $matrizTemPrin[$anio][$fila];
-    $contPromedio = 0
+    $contPromedio = 0;
     }
 
     $promedio = $suma/$contPromedio;
-    echo "Promedio: " . round($promedio, 2) . "°C\n"; 
+    echo "Promedio: " . round($promedio, 2) . ("°C\n"); 
 }
 
 
