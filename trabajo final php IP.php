@@ -115,8 +115,69 @@ function tempAnual ($anio, $mes, $matrizTemPrin){
     }
     return $invierno;
  }
-
-
-
-$pi = matrizTemp(); 
-columnaMatriz($pi);
+function menuOpcion {
+    $matrizTemPrin[];
+    do {
+        echo "\nMenú de opciones:\n";
+        echo "1. Carga automática de temperaturas\n";
+        echo "2. Carga manual de temperaturas\n";
+        echo "3. Mostrar matriz completa\n";
+        echo "4. Mostrar temperatura de un año y mes\n";
+        echo "5. Mostrar temperaturas de todos los meses de un año\n";
+        echo "6. Mostrar temperaturas de un mes en todos los años y su promedio\n";
+        echo "7. Hallar temperaturas máximas y mínimas\n";
+        echo "8. Mostrar matriz de primavera\n";
+        echo "9. Mostrar matriz de invierno (últimos 5 años)\n";
+        echo "0. Salir\n";
+        echo "Elija una opción: ";
+        $opcion = intval(trim(fgets(STDIN)));
+         
+        switch ($opcion) {
+            case 1:
+                $matrizTemPrin = matrizTemp();
+                echo "Se realizo la carga automatica de termperaturas.\n";
+                break;
+            case 2:
+                $matrizTemPrin = matrizManual();
+                break;
+            case 3:
+                columnaMatriz($arrayprinc);
+                break;
+            case 4:
+                echo "Ingrese el año (Desde 2014 hasta el 2023): ";
+                $colum = intval(trim(fgets(STDIN)));
+                echo "Ingrese el mes (Del 1 al 12): ";
+                $fila = intval(trim(fgets(STDIN)));
+                devuelveTemp($matrizTemPrin, $fila, $colum);
+                break;
+            case 5:
+                echo "Ingrese el año (Desde el 2014 hasta el 2023): ";
+                $colum = intval(trim(fgets(STDIN)));
+                tempMensual($colum, $fila,$matrizTemPrin);
+                break;
+            case 6:
+                echo "Ingrese el mes (Del 1 al 12): ";
+                $fila = intval(trim(fgets(STDIN)));
+                tempAnual ($fila, $colum,$matrizTemPrin);
+                break;
+            case 7:
+                tempMaxMin($fila, $colum,$matrizTemPrin);
+                break;  
+            case 8:
+                $primavera = tempePrimavera ($matrizTemPrin);
+                mostrarTemp($primavera);
+                break;    
+            case 9:
+                $invierno = matrizInvierno($matriz);
+                mostrarTemp($invierno);
+                break;
+            case 0:
+                echo "Saliendo del programa.\n";
+                break;
+            default:
+                 echo "La opcion elegida es erronea. Ingrese nuevamente.\n";
+        }
+    }while ($opcion != 0);
+}
+// para poder ejecutar el menú
+menuOpcion();
