@@ -47,11 +47,23 @@ function devuelveTemp($matrizTemPrin, $anio, $mes){
 function tempMensual($anio, $mes, $matrizTemPrin){
     $colum = $anio - 2014;
     $cantElementos = count($matrizTemPrin[$colum]) ;
-    for($mes = 0; $mes > $cantElementos; $mes++){
+    for($mes = 0; $mes < $cantElementos; $mes++){
         echo $matrizTemPrin[$colum][$mes].("\n"); 
     }
 }// a revisar
+function tempAnual ($anio, $mes, $matrizTemPrin){
+    $fila = $mes - 1; 
+    $suma = 0;
+    $contPromedio = 0;
+    for (anio = 0; $anio count($matrizTemPrin); $anio++){
+    echo (2014 + $anio). ":" $matrizTemPrin[$anio][$fila] ."ºC\n";
+    $suma +  $matrizTemPrin[$anio][$fila];
+    $contPromedio = 0
+    }
 
+    $promedio = $suma/$contPromedio;
+    echo "Promedio: " . round($promedio, 2) . "°C\n"; 
+}
 
 
 $pi = matrizTemp(); 
