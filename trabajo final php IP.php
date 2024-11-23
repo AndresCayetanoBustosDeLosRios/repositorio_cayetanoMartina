@@ -29,6 +29,7 @@ function matrizManual(){
 function columnaMatriz($matrizTemPrin){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
+        echo "Año " . (2014 + $anio) . ": ";
         for ($mes = 0; $mes < 12; $mes++){
         echo(" ").$matrizTemPrin [$anio] [$mes].("\n");
       } 
@@ -149,7 +150,7 @@ function menuOpcion(){
                 $anio = intval(trim(fgets(STDIN)));
                 echo "Ingrese el mes (Del 1 al 12): ";
                 $mes = intval(trim(fgets(STDIN)));
-                devuelveTemp($matrizTemPrin, $anio, $colum);
+                devuelveTemp($matrizTemPrin, $anio, $mes);
                 break;
             case 5:
                 echo "Ingrese el año (Desde el 2014 hasta el 2023): ";
