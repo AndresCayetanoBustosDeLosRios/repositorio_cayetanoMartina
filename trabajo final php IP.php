@@ -18,7 +18,7 @@ function matrizManual(){
     $anio = 0; $mes = 0;
     for ($anio = 0; $anio < 10; $anio++){
         for ($mes=0; $mes<12; $mes++){
-        echo ("ingrese una temperatura mayor -50 o menor a 50");
+        echo ("ingrese una temperatura mayor -50 o menor a 50\n");
         $temperatura = trim(fgets(STDIN));
         $matrizTemPrin [$anio] [$mes] = $temperatura;
 
@@ -28,13 +28,20 @@ function matrizManual(){
 } 
 function columnaMatriz($matrizTemPrin){
     $anio = 0; $mes = 0;
+    echo "----------------------------------------------------------------------------------------------\n";
+    echo "    Año   |   Ene    Feb    Mar    Abr    May    Jun    Jul    Ago    Sep    Oct    Nov    Dic\n";
+    echo "----------------------------------------------------------------------------------------------\n";
+
     for ($anio = 0; $anio < 10; $anio++){
         echo ("\n")."Año " . (2014 + $anio) . ":";
         for ($mes = 0; $mes < 12; $mes++){
-        echo(" ").$matrizTemPrin [$anio] [$mes];
-      } 
+       printf(" %6d", $matrizTemPrin[$anio][$mes]); // Ajusta la alineación de columnas
+        }
+        echo "\n";
     }
-}
+    echo "------------------------------------------------------------------------------------------------\n";
+      } 
+    
 //punto d, devuelve temp dado mes y año
 function devuelveTemp($matrizTemPrin, $anio, $mes){
     $fila = $mes - 1;
@@ -54,18 +61,20 @@ function tempMensual($anio, $matrizTemPrin){
 }// a revisar
 
 //punto f, muestra para un mes determinado las temp de todos los años y el promedio
-function tempAnual ($mes, $matrizTemPrin){
+function tempAnual($mes, $matrizTemPrin){
     $fila = $mes - 1; 
     $suma = 0;
     $contPromedio = 0;
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
         echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$fila] .("°C\n");
-    $suma +  $matrizTemPrin[$anio][$fila];
-    $contPromedio = 0;
+    $suma +=  $matrizTemPrin[$anio][$fila];
+    $contPromedio++;
     }
-
-    $promedio = $suma/$contPromedio;
-    echo "Promedio: " . round($promedio, 2) . ("°C\n"); 
+    if ($contPromedio > 0) {
+        $contPromedio = $suma / $contPromedio;
+        echo "Promedio: " . round($contPromedio,2) . "°C\n";
+ }      
+   
 }
 
 //punto g, halla la temp máx. y mín. dado mes y año.
@@ -73,20 +82,22 @@ function tempAnual ($mes, $matrizTemPrin){
  * @return int */
 
  function tempMaxMin($matrizTemPrin){
-    $mes = $mes - 1;
-    $anio = $anio - 2014;
     $tempMax = $matrizTemPrin[0][0];
     $tempMin = $matrizTemPrin [0][0];
     $mesMax = 1;
     $mesMin = 1;
-        for($anio = 0; $anio < 10; $anio++){
-            for($mes = 0; $mes < 12; $mes++){
+    $anioMax = 2014;
+    $anioMin = 2014;
+        for($anio = 0; $anio < count($matrizTemPrin); $anio++){
+            for($mes = 0; $mes < count($matrizTemPrin[$anio]); $mes++){
                 if($matrizTemPrin[$anio][$mes] > $tempMax){
                     $tempMax = $matrizTemPrin[$anio][$mes]; 
+                    $anioMax = 2014 + $anio;
                     $mesMax = $mes + 1;
                 }
                     if($matrizTemPrin[$anio][$mes] < $tempMin){
                         $tempMin = $matrizTemPrin[$anio][$mes];
+                        $anioMin = 2014 + $anio;
                         $mesMin = $mes + 1;
                     }    
             }
@@ -96,19 +107,14 @@ function tempAnual ($mes, $matrizTemPrin){
     echo "La temperatura mínima: ".$tempMin."°C".("\n");     
  }
  //
- function tempPrimavera ($matrizTemPrin){
+ function tempPrimavera($matrizTemPrin){
     $primavera = [];
-    for ($anio = 0; $anio < 10; $anio++){
+    for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
         $primavera[$anio] = [$matrizTemPrin[$anio][9], $matrizTemPrin[$anio][10], $matrizTemPrin[$anio][11]]; 
     }
     return $primavera;
  }
-
- //función para obtener la matriz de invierno (jul-ago-sep) ultimos 5 años
-/**@param int $matrizTemPrin
- * @return int
- */
- function tempInvierno($matrizTemPrin){
+ function tempInvierno($matrizTemPrin){   
     $invierno = [];
     for($anio = 5; $anio < 10; $anio++){
         $invierno[$anio -5] = [$matrizTemPrin[$anio][6], $matrizTemPrin[$anio][7], $matrizTemPrin[$anio][8]];
@@ -168,12 +174,34 @@ function menuOpcion(){
                 break;  
             case 8:
                 $primavera = tempPrimavera($matrizTemPrin);
-                muestraTemp($primavera); //a revisar
-                break;    
+                   echo "-----------------------------------------\n";
+                   echo "    Año   |      oct     nov     dic\n";
+                   echo "-----------------------------------------\n";
+
+                   for ($anio = 0; $anio < count($primavera); $anio++) {
+                   echo "   " . (2014 + $anio) . "   |"; 
+                   for ($mes = 0; $mes < count($primavera[$anio]); $mes++) {
+                   printf(" %7d", $primavera[$anio][$mes]);
+                    }
+                   echo "\n";
+                   }
+                   echo "-----------------------------------------\n";
+                   break;           
             case 9:
                 $invierno = tempInvierno($matrizTemPrin);
-                muestraTemp($invierno); //a revisar
-                break;
+                  echo "-----------------------------------------\n";
+                  echo "    Año   |      jul     ago     sep\n";
+                  echo "-----------------------------------------\n";
+            
+                  for ($anio = 0; $anio < count($invierno); $anio++) {
+                    echo "   " . (2019 + $anio) . "   |"; 
+                    for ($mes = 0; $mes < count($invierno[$anio]); $mes++) {
+                        printf(" %7d", $invierno[$anio][$mes]);
+                    }
+                    echo "\n";
+                }
+                  echo "-----------------------------------------\n";
+                  break;
             case 0:
                 echo "Saliendo del programa.\n";
                 break;
@@ -184,5 +212,3 @@ function menuOpcion(){
 }
 // para poder ejecutar el menú
 menuOpcion();
-
-?>
