@@ -60,7 +60,23 @@ function tempMensual($anio, $matrizTemPrin){
     }
 }// a revisar
 
-//punto f, muestra temperaturas máximas y mínimas halladas en un periodo de tiempo
+//punto f, muestra para un mes determinado las temp de todos los años y el promedio
+function tempAnual($mes, $matrizTemPrin){
+    $fila = $mes - 1; 
+    $suma = 0;
+    $contPromedio = 0;
+    for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
+        echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$fila] .("°C\n");
+    $suma +=  $matrizTemPrin[$anio][$fila];
+    $contPromedio++;
+    }
+    if ($contPromedio > 0) {
+        $contPromedio = $suma / $contPromedio;
+        echo "Promedio: " . round($contPromedio,2) . "°C\n";
+ }      
+   
+}
+//punto g, muestra temperaturas máximas y mínimas halladas en un periodo de tiempo
 function tempMaxMin($matrizTemPrin){
     $tempMax = $matrizTemPrin[0][0]; 
     $tempMin = $matrizTemPrin[0][0];
