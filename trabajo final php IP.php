@@ -81,32 +81,43 @@ function tempAnual($mes, $matrizTemPrin){
 /**@param int $anio, $mes, $matrizTemPrin
  * @return int */
 
- function tempMaxMin($matrizTemPrin){
-    $tempMax = $matrizTemPrin[0][0];
-    $tempMin = $matrizTemPrin [0][0];
-    $mesMax = 1;
-    $mesMin = 1;
-    $anioMax = 2014;
-    $anioMin = 2014;
-        for($anio = 0; $anio < count($matrizTemPrin); $anio++){
-            for($mes = 0; $mes < count($matrizTemPrin[$anio]); $mes++){
-                if($matrizTemPrin[$anio][$mes] > $tempMax){
-                    $tempMax = $matrizTemPrin[$anio][$mes]; 
-                    $anioMax = 2014 + $anio;
-                    $mesMax = $mes + 1;
-                }
-                    if($matrizTemPrin[$anio][$mes] < $tempMin){
-                        $tempMin = $matrizTemPrin[$anio][$mes];
-                        $anioMin = 2014 + $anio;
-                        $mesMin = $mes + 1;
-                    }    
-            }
+ function tempMaxMin($matrizTemPrin) {
+    $meses = ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"];
+    $anioBase = 2014; // Año inicial
+    
+    echo "-----------------------------------------------\n";
+    echo "|  Año  | Mes Mín | Temp. Mín | Mes Máx | Temp. Máx |\n";
+    echo "-----------------------------------------------\n";
 
-         }
-    echo "La temperatura máxima: ".$tempMax ."°C".("\n");
-    echo "La temperatura mínima: ".$tempMin."°C".("\n");     
- }
- //
+    $filas = count($matrizTemPrin); // Cantidad de años
+
+    for ($indiceAnio = 0; $indiceAnio < $filas; $indiceAnio++) {
+        $tempMin = PHP_INT_MAX; // Inicializamos con el valor máximo posible
+        $tempMax = PHP_INT_MIN; // Inicializamos con el valor mínimo posible
+        $mesMin = "";
+        $mesMax = "";
+
+        $columnas = count($matrizTemPrin[$indiceAnio]); // Cantidad de meses
+        for ($indiceMes = 0; $indiceMes < $columnas; $indiceMes++) {
+            $temp = $matrizTemPrin[$indiceAnio][$indiceMes];
+
+            if ($temp < $tempMin) {
+                $tempMin = $temp;
+                $mesMin = $meses[$indiceMes];
+            }
+            if ($temp > $tempMax) {
+                $tempMax = $temp;
+                $mesMax = $meses[$indiceMes];
+            }
+        }
+
+        $anioActual = $anioBase + $indiceAnio;
+        printf("| %5d | %7s | %9d | %7s | %9d |\n", $anioActual, $mesMin, $tempMin, $mesMax, $tempMax);
+    }
+    
+    echo "-----------------------------------------------\n";
+}
+
  function tempPrimavera($matrizTemPrin){
     $primavera = [];
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
