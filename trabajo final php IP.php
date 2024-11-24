@@ -136,7 +136,7 @@ function tempMaxMin($matrizTemPrin) {
     }
 
     echo "-----------------------------------------\n";
-}
+
     for($anio = 0; $anio < count($matrizTemPrin); $anio++){
         $tempMaxAnio = $matrizTemPrin[$anio][0];
         $tempMinAnio = $matrizTemPrin[$anio][0];
@@ -162,7 +162,7 @@ function tempMaxMin($matrizTemPrin) {
 }
 
 
- //
+ //muestra temperaturas de primavera de todos los años
  function tempPrimavera($matrizTemPrin){
     $primavera = [];
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
