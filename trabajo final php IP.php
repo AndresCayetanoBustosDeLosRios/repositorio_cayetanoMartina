@@ -253,7 +253,7 @@ function menuOpcion(){
             case 10:
                 $mostrarMatriz = matrizTemp();
                 $temPrimavera = tempPrimavera($matrizTemPrin);
-                $temInvierno = tempInvierno($matrizTemPrin); //a revisaaar
+                $temInvierno = tempInvierno($matrizTemPrin);
                 echo "\n"."Las matrices han sido cargadas con éxito."."\n";
                 break;      
             case 0:
