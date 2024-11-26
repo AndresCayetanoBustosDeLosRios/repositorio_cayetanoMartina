@@ -85,7 +85,6 @@ function tempAnual($mes, $matrizTemPrin){
 }
 //punto g, muestra temperaturas máximas y mínimas halladas en un periodo de tiempo
 function tempMaxMin($matrizTemPrin) {
-    // Inicializar con el primer elemento de la matriz
     $tempMax = $matrizTemPrin[0][0];
     $tempMin = $matrizTemPrin[0][0];
     $mesMax = 1;
@@ -147,7 +146,7 @@ function tempMaxMin($matrizTemPrin) {
 
 
 
- //muestra temperaturas de primavera de todos los años
+ // H muestra temperaturas de primavera de todos los años
  function tempPrimavera($matrizTemPrin){
     $primavera = [];
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
@@ -155,6 +154,7 @@ function tempMaxMin($matrizTemPrin) {
     }
     return $primavera;
  }
+ // I Muestra temperaturas de invierno en los ultimos cinco años 
  function tempInvierno($matrizTemPrin){   
     $invierno = [];
     for($anio = 5; $anio < 10; $anio++){
