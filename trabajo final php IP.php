@@ -182,7 +182,7 @@ function menuOpcion(){
         echo "7. Hallar temperaturas máximas y mínimas\n";
         echo "8. Mostrar matriz de primavera\n";
         echo "9. Mostrar matriz de invierno (últimos 5 años)\n";
-        echo "10. Guarda las matrices"."\n";
+        echo "10. Guardado general de las matrices"."\n";
         echo "0. Salir\n";
         echo "Elija una opción: ";
         $opcion = intval(trim(fgets(STDIN)));
