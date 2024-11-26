@@ -33,7 +33,7 @@ function matrizManual() {
 }
 
 
-function columnaMatriz($matrizTemPrin){
+function muestraMatriz($matrizTemPrin){
     $anio = 0; $mes = 0;
     echo "----------------------------------------------------------------------------------------------\n";
     echo "    Año   |   Ene    Feb    Mar    Abr    May    Jun    Jul    Ago    Sep    Oct    Nov    Dic\n";
@@ -163,6 +163,12 @@ function tempMaxMin($matrizTemPrin) {
     }
     return $invierno;
  }
+
+ function guardaMatrices($mostrarMatriz, $temPrimavera, $temInvierno){
+    $matrices = ["completa" => $mostrarMatriz,
+                "primavera" => $temPrimavera, 
+                "invierno" => $temInvierno];
+ }
 function menuOpcion(){
     $matrizTemPrin = matrizTemp();
     do {
@@ -176,6 +182,7 @@ function menuOpcion(){
         echo "7. Hallar temperaturas máximas y mínimas\n";
         echo "8. Mostrar matriz de primavera\n";
         echo "9. Mostrar matriz de invierno (últimos 5 años)\n";
+        echo "10. Guarda las matrices"."\n";
         echo "0. Salir\n";
         echo "Elija una opción: ";
         $opcion = intval(trim(fgets(STDIN)));
@@ -190,7 +197,7 @@ function menuOpcion(){
                 $matrizTemPrin = matrizManual();
                 break;
             case 3:
-                columnaMatriz($matrizTemPrin);
+                muestraMatriz($matrizTemPrin);
                 break;
             case 4:
                 echo "Ingrese el año (Desde 2014 hasta el 2023): ";
@@ -243,6 +250,12 @@ function menuOpcion(){
                 }
                   echo "-----------------------------------------\n";
                   break;
+            case 10:
+                $mostrarMatriz = matrizTemp();
+                $temPrimavera = tempPrimavera($matrizTemPrin);
+                $temInvierno = tempInvierno($matrizTemPrin); //a revisaaar
+                echo "\n"."Las matrices han sido cargadas con éxito."."\n";
+                break;      
             case 0:
                 echo "Saliendo del programa.\n";
                 break;
