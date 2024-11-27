@@ -164,7 +164,7 @@ function tempMaxMin($matrizTemPrin) {
     return $invierno;
  }
 
- function guardaMatrices($matrizTemPrin, $temPrimavera, $temInvierno){
+ function guardaMatrices($mostrarMatriz, $temPrimavera, $temInvierno){
     $matrices = ["completa" => $mostrarMatriz,
                 "primavera" => $temPrimavera, 
                 "invierno" => $temInvierno];
