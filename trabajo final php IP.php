@@ -51,8 +51,8 @@ function muestraMatriz($matrizTemPrin){
     
 //punto d, devuelve temp dado mes y año
 function devuelveTemp($matrizTemPrin, $anio, $mes){
-    $fila = $mes - 1;
-    $colum = $anio - 2014;
+    $colum = $mes - 1;
+    $fila = $anio - 2014;
 
     $temp = $matrizTemPrin[$colum][$fila];
   return $temp;  
@@ -60,21 +60,21 @@ function devuelveTemp($matrizTemPrin, $anio, $mes){
     
 //punto e, devuelve la temperatura de cada mes dependiendo del año elegido
 function tempMensual($anio, $matrizTemPrin){
-    $colum = $anio - 2014;
-    $cantElementos = count($matrizTemPrin[$colum]) ;
+    $fila = $anio - 2014;
+    $cantElementos = count($matrizTemPrin[$fila]) ;
     for($mes = 0; $mes < $cantElementos; $mes++){
-        echo $matrizTemPrin[$colum][$mes].("\n"); 
+        echo $matrizTemPrin[$fila][$mes].("\n"); 
     }
 }
 
 //punto f, muestra para un mes determinado las temp de todos los años y el promedio
 function tempAnual($mes, $matrizTemPrin){
-    $fila = $mes - 1; 
+    $colum = $mes - 1; 
     $suma = 0;
     $contPromedio = 0;
     for ($anio = 0; $anio < count($matrizTemPrin); $anio++){
-        echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$fila] .("°C\n");
-    $suma +=  $matrizTemPrin[$anio][$fila];
+        echo (2014 + $anio). (":") .$matrizTemPrin[$anio][$colum] .("°C\n");
+    $suma +=  $matrizTemPrin[$anio][$colum];
     $contPromedio++;
     }
     if ($contPromedio > 0) {
